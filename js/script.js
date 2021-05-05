@@ -3,6 +3,13 @@ Treehouse FSJS Techdegree:
 Project 1 - A Random Quote Generator
 ******************************************/
 
+
+/***
+ * Global variables
+ */
+const quoteDisplayTime = 15000;
+let displayInterval;
+
 /***
  * `getRandomQuote` function
  * return a random quote object from an array of quote objects
@@ -71,18 +78,26 @@ const printQuote = randomQuote => {
     return html;
 }
 
-// Initially display random quote on page load
+/***
+ * `displayTimer` function
+ * Change quote automatically after designated interval (ms)
+ */
+const displayTimer = (quoteDisplayTime) => {
+    displayInterval = setInterval(() => printQuote(getRandomQuote(quotes)), quoteDisplayTime);
+}
+
+/***
+ * Initially display quote on page load
+ */
 document.getElementById('quote-box').innerHTML = printQuote(getRandomQuote(quotes));
-// Change quote automatically after 15 seconds
-let displayTimer = setInterval(() => printQuote(getRandomQuote(quotes)), 5000);
+displayTimer(quoteDisplayTime);
 
 /***
  * click event listener for the print quote button
 ***/
-
 document.getElementById('load-quote').addEventListener("click",() => {
     printQuote(getRandomQuote(quotes));
     // Reset the quote refresh timer if change quote button is pressed
-    clearInterval(displayTimer);
-    displayTimer = setInterval(() => printQuote(getRandomQuote(quotes)), 5000)
+    clearInterval(displayInterval);
+    displayTimer(quoteDisplayTime);
 }, false);

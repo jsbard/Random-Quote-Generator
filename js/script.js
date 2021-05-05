@@ -12,6 +12,20 @@ const getRandomQuote = (quotes) => {
     return quotes[randomQuoteIndex];
 }
 
+const generateRandomBackground = () => {
+
+    const randomRGBValue = () => {
+
+        const number = () => {
+            return Math.floor(Math.random() * 255);
+        }
+
+        return `rgb(${number()}, ${number()}, ${number()})`;
+    }
+
+    document.body.style.backgroundColor = randomRGBValue();
+}
+
 
 
 /***
@@ -39,16 +53,18 @@ const printQuote = randomQuote => {
 
     html += `</p>`;
 
+    document.getElementById('quote-box').innerHTML = html;
+    generateRandomBackground();
+
     return html;
 }
 
-const randomQuote = printQuote(getRandomQuote(quotes));
-document.getElementById('quote-box').innerHTML = randomQuote;
 
+document.getElementById('quote-box').innerHTML = printQuote(getRandomQuote(quotes));
+setInterval(() => printQuote(getRandomQuote(quotes)), 5000);
 
 /***
  * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click",() => printQuote(getRandomQuote(quotes)), false);

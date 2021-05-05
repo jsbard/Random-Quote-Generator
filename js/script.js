@@ -3,19 +3,14 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
-
-
-
 /***
  * `getRandomQuote` function
 ***/
+
+const getRandomQuote = (quotes) => {
+    const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomQuoteIndex];
+}
 
 
 
@@ -23,6 +18,32 @@ project 1 - A Random Quote Generator
  * `printQuote` function
 ***/
 
+const printQuote = randomQuote => {
+    const quote = randomQuote;
+
+    let html = ``;
+    html += `<p class="quote">${quote.quote}</p>`;
+    html += `<p class="source">${quote.source}`;
+
+    if (quote.translation) {
+        html += `<p>Translation: ${quote.translation}</p>`;
+    }
+
+    if (quote.citation){
+        html += `<span class="citation">${quote.citation}</span>`;
+    }
+
+    if (quote.year) {
+        html += `<span class="year">${quote.year}</span>`;
+    }
+
+    html += `</p>`;
+
+    return html;
+}
+
+const randomQuote = printQuote(getRandomQuote(quotes));
+document.getElementById('quote-box').innerHTML = randomQuote;
 
 
 /***

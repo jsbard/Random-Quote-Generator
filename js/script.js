@@ -30,7 +30,7 @@ const generateRandomBackground = () => {
         // Return a string with a properly formatted RGB value
         const number = () => {
             // Return a random number between 0 and 255
-            return Math.floor(Math.random() * 255);
+            return Math.floor(Math.random() * 256);
         }
 
         return `rgb(${number()}, ${number()}, ${number()})`;
@@ -48,8 +48,8 @@ const generateRandomBackground = () => {
  * returns the quote and html template for use in other functions if needed
 ***/
 
-const printQuote = randomQuote => {
-    const quote = randomQuote;
+const printQuote = () => {
+    const quote = getRandomQuote(quotes);
 
     // Build html template from quote object data
     let html = ``;
@@ -83,20 +83,20 @@ const printQuote = randomQuote => {
  * Change quote automatically after designated interval (ms)
  */
 const displayTimer = (quoteDisplayTime) => {
-    displayInterval = setInterval(() => printQuote(getRandomQuote(quotes)), quoteDisplayTime);
+    displayInterval = setInterval(() => printQuote(), quoteDisplayTime);
 }
 
 /***
  * Initially display quote on page load
  */
-document.getElementById('quote-box').innerHTML = printQuote(getRandomQuote(quotes));
+document.getElementById('quote-box').innerHTML = printQuote();
 displayTimer(quoteDisplayTime);
 
 /***
  * click event listener for the print quote button
 ***/
 document.getElementById('load-quote').addEventListener("click",() => {
-    printQuote(getRandomQuote(quotes));
+    printQuote();
     // Reset the quote refresh timer if change quote button is pressed
     clearInterval(displayInterval);
     displayTimer(quoteDisplayTime);

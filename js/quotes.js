@@ -28,7 +28,7 @@ let quotes = [
         year: 2011
     },
     {
-      quote: "For many a lonely day sailed across the milky seas\n" +
+      quote: "For many a lonely day sailed across the milky seas," + "&nbsp;" +
              "Ne'er looked back, never feared, never cried",
       source: "Brian May",
       citation: "'39, A Night At The Opera, Queen",

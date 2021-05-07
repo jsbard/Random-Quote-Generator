@@ -26,5 +26,13 @@ let quotes = [
         source: "Steven Pressfield",
         citation: "Do The Work",
         year: 2011
+    },
+    {
+      quote: "For many a lonely day sailed across the milky seas\n" +
+             "Ne'er looked back, never feared, never cried",
+      source: "Brian May",
+      citation: "'39, A Night At The Opera, Queen",
+      year: 1975
+
     }
 ];

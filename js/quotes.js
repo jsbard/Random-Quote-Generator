@@ -22,6 +22,12 @@ let quotes = [
         year: "1st Century C.E."
     },
     {
+        quote: "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+        source: "Will Durant",
+        citation: "The Story Of Philosophy",
+        year: 1926
+    },
+    {
         quote: "A child has no trouble believing the unbelievable, nor does the genius or the madman. It's only you and I, with our big brains and our tiny hearts, who doubt and overthink and hesitate.",
         source: "Steven Pressfield",
         citation: "Do The Work",
